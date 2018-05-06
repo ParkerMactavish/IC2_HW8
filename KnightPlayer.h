@@ -23,6 +23,8 @@ class KnightPlayer: public GeneralPlayer
 		//int getExp()const;
 		
 		void heal();
+
+		void specialSkill();
 		
 	private:
 		void setAttr(int);

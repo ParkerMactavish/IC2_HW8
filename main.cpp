@@ -1,10 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <windows.h>
 #include "GeneralPlayer.h"
 #include "OrcPlayer.h"
 #include "MagicianPlayer.h"
 #include "KnightPlayer.h"
+#include "AbstractMonster.h"
+#include "GoblinMonster.h"
+#include "ZombieMonster.h"
+#include "JWMonster.h"
+
+using namespace std;
 
 void GPTest()
 {
@@ -206,13 +213,83 @@ void KPTest()
 	cout<<"Heal:"<<endl<<G4<<endl;
 }
 
-using namespace std;
+void GMTest()
+{
+	GoblinMonster GM1;
+	GeneralPlayer* GP1 = new KnightPlayer(3, "victim");
+	cout <<"Initial:"<<endl<< GM1 << endl << *GP1<<endl;
+	GM1.attackTo(GP1);
+	cout<<endl << *GP1<<endl;
+}
+
+void ZMTest()
+{
+	ZombieMonster GM1;
+	GeneralPlayer* GP1 = new KnightPlayer(3, "victim");
+	cout << "Initial:" << endl << GM1 << endl << *GP1 << endl;
+	GM1.attackTo(GP1);
+	cout << endl << *GP1<<endl;
+}
+
+void JWTest()
+{
+	JWMonster JW1;
+	GeneralPlayer* GP1 = new OrcPlayer(10, "victim");
+	cout << JW1 << endl << *GP1 << endl;
+	for (int i = 0; i < 10; i++)
+	{
+		JW1.attackTo(GP1);
+		cout << endl;
+		Sleep(1);
+	}
+}
+
+void GMhitTest(GeneralPlayer* GP)
+{
+	AbstractMonster* GM = new GoblinMonster;
+	cout << *GP << endl;
+	GP->attackTo(GM);
+	cout << *GP << endl;
+}
+
+void ZMhitTest(GeneralPlayer* GP)
+{
+	AbstractMonster* ZM = new ZombieMonster;
+	cout << *GP << endl;
+	GP->attackTo(ZM);
+	cout << *GP << endl;
+}
+
+void JWhitTest(GeneralPlayer* GP)
+{
+	AbstractMonster* JW = new JWMonster;
+	cout << *GP << endl;
+	GP->attackTo(JW);
+	GP->attackTo(JW);
+	cout << *GP << endl;
+}
 
 int main()
 {
-	GPTest();
+	/*GPTest();
 	OPTest();
 	MPTest();
 	KPTest();
+	cout << "_____________________________________________" << endl
+		 << "Test for Monster:" << endl;*/
+	/*GMTest();
+	ZMTest();
+	ZMTest();
+	ZMTest();
+	ZMTest();
+	JWTest();*/
+	cout << "_____________________________________________" << endl
+		<< "Test for Player Attack" << endl;
+	GeneralPlayer* GP = new OrcPlayer(15, "butcher");
+	GeneralPlayer* GP2 = new OrcPlayer(20, "butcher the better");
+	GMhitTest(GP);
+	ZMhitTest(GP);
+	JWhitTest(GP2);
+	system("PAUSE");
 	return 0;
 }

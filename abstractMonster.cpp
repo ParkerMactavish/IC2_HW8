@@ -14,7 +14,7 @@ void AbstractMonster::setHP(int HP)
 	else if(this->max_hp<HP)
 	{
 		this->hp=max_hp;
-		cout<<"Warning: HP has exceeded, HP is max."<<endl;
+		//cout<<"Warning: HP has exceeded, HP is max."<<endl;
 	}
 	else
 	{
@@ -34,7 +34,7 @@ void AbstractMonster::setMP(int MP)
 	else if(this->max_mp<MP)
 	{		
 		this->mp=this->max_mp;
-		cout<<"Warning: MP has exceeded, MP is max."<<endl;
+		//cout<<"Warning: MP has exceeded, MP is max."<<endl;
 	}
 	else
 	{

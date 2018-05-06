@@ -23,6 +23,7 @@ class MagicianPlayer: public GeneralPlayer
 		//int getExp()const;
 		
 		void pray();
+		void specialSkill();
 		
 	private:
 		void setAttr(int);

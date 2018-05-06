@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-class AbstractMonster{};
+class AbstractMonster;
 
 using namespace std;
 
@@ -36,7 +36,8 @@ class GeneralPlayer
 		friend ostream& operator<< (ostream&, GeneralPlayer&);
 		
 		void attackTo(AbstractMonster*);
-	
+		virtual void specialSkill();
+
 	protected:		
 		int level;
 		int attack;

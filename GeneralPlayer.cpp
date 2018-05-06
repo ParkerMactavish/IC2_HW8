@@ -3,6 +3,7 @@
 #include <iostream>
 #include "GeneralPlayer.h"
 #include <cstdlib>
+#include "abstractMonster.h"
 
 using namespace std;
 
@@ -79,10 +80,7 @@ void GeneralPlayer::setLevel(int Level)
 		this->setAttr(Level);		
 		this->setExp(ceil(pow(10, log2(this->level))));
 	}
-	else if(Level<=this->level)
-	{
-		cout<<"Error: Level of "<<this->getName()<<" is smaller than or equal to previous."<<endl;
-	}
+	else if (Level > 0 && Level == this->level);
 	else
 	{
 		cout<<"Error: Level of "<<this->getName()<<" is smaller than one."<<endl;
@@ -151,16 +149,12 @@ int GeneralPlayer::getDef() const{return this->defense;}
 
 void GeneralPlayer::increaseHP(int num)
 {
-	if((this->hp+num)>this->max_hp) this->hp=this->max_hp;
-	else if((this->hp+num)<0) cout<<"Error: HP of "<<this->getName()<<" is smaller than zero."<<endl;
-	else this->hp+=num;
+	this->setHP(this->getHP() + num);
 }
 
 void GeneralPlayer::increaseMP(int num)
 {
-	if((this->mp+num)>this->max_mp) this->mp=this->max_mp;
-	else if((this->mp+num)<0) cout<<"Error: MP of "<<this->getName()<<" is smaller than zero."<<endl;
-	else this->mp+=num;
+	this->setMP(this->getMP() + num);
 }
 
 void GeneralPlayer::increaseExp(int num)
@@ -183,9 +177,26 @@ ostream& operator<< (ostream& os, GeneralPlayer& rhs)
 	cout<<rhs.lvup_exp-rhs.exp<<" to go to level up"<<endl;
 	cout<<"Att: "<<rhs.attack<<endl;
 	cout<<"Def: "<<rhs.defense<<endl;
+	return os;
 }
 
-void attackTo(AbstractMonster*)
+void GeneralPlayer::attackTo(AbstractMonster* AM)
 {
-	
+	float dice = rand() % 200;
+	float damage = -((dice - 100.0 + 1000.0) / 1000.0)*(float)(this->getAtt()) + (float)AM->defense;
+	damage = damage <= 0 ? damage : 0;
+	AM->setHP(AM->getHP() + damage);
+
+	if (damage == 0) cout << "Defense of " << AM->name << " has TOTALLY blocked the attack from " << this->getName() << endl;
+	else if (dice>105)cout << "You crits~" << endl;
+	else if (dice<95) cout << "You have missed a little bit" << endl;
+
+	cout << "Monster " << AM->name << " has received a normal attack " << (int)-damage << " points." << endl
+		<< "Now " << AM->name << " only has " << AM->getHP() << " health points left." << endl;
+	if (AM->getHP() == 0)
+	{
+		cout << "Player " << this->getName() << " has killed " << AM->name << "~" << endl;
+		this->increaseExp(AM->exp);
+	}
+
 }

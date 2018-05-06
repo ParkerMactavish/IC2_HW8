@@ -12,11 +12,13 @@ using namespace std;
 class GoblinMonster:public AbstractMonster
 {
 	public:		
-		GoblinMonster(string);
+		GoblinMonster();
 		~GoblinMonster();
 		void attackTo(GeneralPlayer*);
 
 		static int count;
+
+		friend ostream& operator <<(ostream&, const GoblinMonster&);
 };
 
 #endif

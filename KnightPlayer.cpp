@@ -129,4 +129,7 @@ ostream& operator<< (ostream& os, KnightPlayer& rhs)
 	cout<<rhs.lvup_exp-rhs.getExp()<<" to go to level up"<<endl;
 	cout<<"Att: "<<rhs.attack<<endl;
 	cout<<"Def: "<<rhs.defense<<endl;
+	return os;
 }
+
+void KnightPlayer::specialSkill() { heal(); }
