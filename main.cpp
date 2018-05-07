@@ -291,14 +291,14 @@ int main()
 	ZMTest();
 	ZMTest();
 	JWTest();*/
-	/*cout << "_____________________________________________" << endl
+	cout << "_____________________________________________" << endl
 		<< "Test for Player Attack" << endl;
 	GeneralPlayer* GP = new OrcPlayer(15, "butcher");
-	GeneralPlayer* GP2 = new OrcPlayer(10, "butcher the better");
+	GeneralPlayer* GP2 = new MagicianPlayer(10, "butcher the better");
 	GMhitTest(GP);
 	ZMhitTest(GP);
-	JWhitTest(GP2);*/
-	KPSKTest();
+	JWhitTest(GP2);
+	//KPSKTest();
 	//MPSKTest();
 
 	system("PAUSE");

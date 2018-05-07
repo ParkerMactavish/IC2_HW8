@@ -81,6 +81,10 @@ void GeneralPlayer::setLevel(int Level)
 		this->setExp(ceil(pow(10, log2(this->level))));
 	}
 	else if (Level > 0 && Level == this->level);
+	else if (Level<this->level)
+	{
+		cout << "Error: Level of " << this->getName() << " is smaller than or equal to previous." << endl;
+	}
 	else
 	{
 		cout<<"Error: Level of "<<this->getName()<<" is smaller than one."<<endl;
@@ -198,6 +202,7 @@ void GeneralPlayer::attackTo(AbstractMonster* AM)
 		cout << "Player " << this->getName() << " has killed " << AM->name << "~" << endl;
 		this->increaseExp(AM->exp);
 	}
+	cout << endl;
 }
 
 void GeneralPlayer::specialSkill() {}
