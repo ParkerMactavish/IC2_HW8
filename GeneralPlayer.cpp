@@ -198,5 +198,6 @@ void GeneralPlayer::attackTo(AbstractMonster* AM)
 		cout << "Player " << this->getName() << " has killed " << AM->name << "~" << endl;
 		this->increaseExp(AM->exp);
 	}
-
 }
+
+void GeneralPlayer::specialSkill() {}

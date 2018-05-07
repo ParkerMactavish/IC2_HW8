@@ -132,4 +132,4 @@ ostream& operator<< (ostream& os, MagicianPlayer& rhs)
 	return os;
 }
 
-void MagicianPlayer::specialSkill() { pray(); }
+void MagicianPlayer::specialSkill() { this->pray(); }

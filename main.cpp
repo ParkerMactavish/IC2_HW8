@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include <windows.h>
+//#include <windows.h>
 #include "GeneralPlayer.h"
 #include "OrcPlayer.h"
 #include "MagicianPlayer.h"
@@ -240,7 +240,7 @@ void JWTest()
 	{
 		JW1.attackTo(GP1);
 		cout << endl;
-		Sleep(1);
+		//Sleep(1);
 	}
 }
 
@@ -264,9 +264,17 @@ void JWhitTest(GeneralPlayer* GP)
 {
 	AbstractMonster* JW = new JWMonster;
 	cout << *GP << endl;
-	GP->attackTo(JW);
-	GP->attackTo(JW);
+	while (JW->getHP() > 0) GP->attackTo(JW);
 	cout << *GP << endl;
+}
+
+void KPSKTest()
+{
+	GeneralPlayer* KP = new KnightPlayer(1, "victim2");
+	AbstractMonster* GM = new GoblinMonster();
+	GM->attackTo(KP);
+	KP->specialSkill();
+	cout << *KP << endl;
 }
 
 int main()
@@ -283,13 +291,16 @@ int main()
 	ZMTest();
 	ZMTest();
 	JWTest();*/
-	cout << "_____________________________________________" << endl
+	/*cout << "_____________________________________________" << endl
 		<< "Test for Player Attack" << endl;
 	GeneralPlayer* GP = new OrcPlayer(15, "butcher");
-	GeneralPlayer* GP2 = new OrcPlayer(20, "butcher the better");
+	GeneralPlayer* GP2 = new OrcPlayer(10, "butcher the better");
 	GMhitTest(GP);
 	ZMhitTest(GP);
-	JWhitTest(GP2);
+	JWhitTest(GP2);*/
+	KPSKTest();
+	//MPSKTest();
+
 	system("PAUSE");
 	return 0;
 }

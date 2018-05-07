@@ -132,4 +132,4 @@ ostream& operator<< (ostream& os, KnightPlayer& rhs)
 	return os;
 }
 
-void KnightPlayer::specialSkill() { heal(); }
+void KnightPlayer::specialSkill() { this->heal(); }
