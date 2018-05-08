@@ -201,6 +201,8 @@ void GeneralPlayer::attackTo(AbstractMonster* AM)
 	{
 		cout << "Player " << this->getName() << " has killed " << AM->name << "~" << endl;
 		this->increaseExp(AM->exp);
+		delete AM;
+		cout << "There are only " << AbstractMonster::count << " left."<<endl;
 	}
 	cout << endl;
 }

@@ -244,25 +244,22 @@ void JWTest()
 	}
 }
 
-void GMhitTest(GeneralPlayer* GP)
+void GMhitTest(GeneralPlayer* GP, AbstractMonster* GM)
 {
-	AbstractMonster* GM = new GoblinMonster;
 	cout << *GP << endl;
 	GP->attackTo(GM);
 	cout << *GP << endl;
 }
 
-void ZMhitTest(GeneralPlayer* GP)
+void ZMhitTest(GeneralPlayer* GP, AbstractMonster* ZM)
 {
-	AbstractMonster* ZM = new ZombieMonster;
 	cout << *GP << endl;
 	GP->attackTo(ZM);
 	cout << *GP << endl;
 }
 
-void JWhitTest(GeneralPlayer* GP)
+void JWhitTest(GeneralPlayer* GP, AbstractMonster* JW)
 {
-	AbstractMonster* JW = new JWMonster;
 	cout << *GP << endl;
 	while (JW->getHP() > 0) GP->attackTo(JW);
 	cout << *GP << endl;
@@ -295,9 +292,12 @@ int main()
 		<< "Test for Player Attack" << endl;
 	GeneralPlayer* GP = new OrcPlayer(15, "butcher");
 	GeneralPlayer* GP2 = new MagicianPlayer(10, "butcher the better");
-	GMhitTest(GP);
-	ZMhitTest(GP);
-	JWhitTest(GP2);
+	AbstractMonster* GM = new GoblinMonster;
+	AbstractMonster* ZM = new ZombieMonster;
+	AbstractMonster* JW = new JWMonster;
+	GMhitTest(GP, GM);
+	ZMhitTest(GP, ZM);
+	JWhitTest(GP2, JW);
 	//KPSKTest();
 	//MPSKTest();
 
